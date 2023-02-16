@@ -11,10 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
+@RequestMapping(value = "/azure")
 public class RestApiController {
 
 	@GetMapping(value = "/gettoken")
@@ -38,11 +40,10 @@ public class RestApiController {
 		System.out.println(data);
 		String access_token = data;
 		return access_token;
-
 	}
 
-	@GetMapping(value = "/call")
-	public static String getEmployees() throws Exception {
+	@GetMapping(value = "/getmanagementgroup")
+	public static String getManagementGroup() throws Exception {
 		String access_token = getToken();
 		System.out.println("My Tokenis " + access_token);
 		HttpHeaders headers = new HttpHeaders();
